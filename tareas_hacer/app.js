@@ -2,6 +2,8 @@ import colors from 'colors'
 //require('colors')
 import { inquireMenu, leerInput, pausa } from './helpers/inquirer.js'
 import { Tareas } from './models/tareas.js'
+import {guardarDB,leerDB} from './helpers/guardarArchivo.js'
+
 
 //const { mostrarMenu, pausa } = require('./helpers/mensajes')
 
@@ -10,6 +12,15 @@ console.clear()
 
 let opt=''
 const tareas =new Tareas()
+
+const tareasDB=leerDB()
+
+
+if (tareasDB){
+//nada
+}
+
+await pausa()
 
 do {
   opt=await inquireMenu()  
@@ -26,6 +37,7 @@ break
   break
 }
 
+//guardarDB(tareas.listadoArr) //Para guardar la base de datos
 await pausa()
   
 } while (opt !=='0');
