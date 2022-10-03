@@ -17,10 +17,10 @@ const tareasDB=leerDB()
 
 
 if (tareasDB){
-//nada
+tareas.cargarTareasFromArray(tareasDB)
 }
 
-await pausa()
+//await pausa()
 
 do {
   opt=await inquireMenu()  
@@ -33,11 +33,21 @@ tareas.crearTarea(desc)
 break
 
   case '2': 
-  console.log(tareas.listadoArr)
+  tareas.listadoCompleto()
   break
+
+  case '3':
+    tareas.listarPendientesCompletadas(true)
+    break
+  
+  case '4':
+    tareas.listarPendientesCompletadas(false)
+    break
+    
+
 }
 
-//guardarDB(tareas.listadoArr) //Para guardar la base de datos
+guardarDB(tareas.listadoArr) //Para guardar la base de datos
 await pausa()
   
 } while (opt !=='0');
