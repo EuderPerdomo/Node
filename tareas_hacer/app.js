@@ -1,6 +1,6 @@
 import colors from 'colors'
 //require('colors')
-import { inquireMenu, leerInput, pausa ,listadoTareasBorrar,confirmar} from './helpers/inquirer.js'
+import { inquireMenu, leerInput, pausa ,listadoTareasBorrar,confirmar,mostrarListadoCheckList} from './helpers/inquirer.js'
 import { Tareas } from './models/tareas.js'
 import {guardarDB,leerDB} from './helpers/guardarArchivo.js'
 
@@ -45,7 +45,8 @@ break
     break
 
   case '5':
-    tareas.listarPendientesCompletadas(false)
+    const ids =await mostrarListadoCheckList(tareas.listadoArr)
+    tareas.toggleCompletadas(ids)
     break
 
   case '5':
